@@ -1,0 +1,33 @@
+{
+  "setupTasks": ["yarn install", "yarn build"],
+  "tasks": {
+    "install-dependencies": {
+      "name": "Install Dependencies",
+      "command": "yarn install"
+    },
+    "download-cli": {
+      "name": "Download edgedb CLI",
+      "command": "curl --proto '=https' --tlsv1.2 -sSf https://sh.edgedb.com | sh"
+      //   "runAtStart": true
+    },
+    "init-edgedb-project": {
+      "name": "Initialize edgedb project (create .toml file, and dbschema folder) --non-interactive flag accepts all defaults",
+      "command": "edgedb project init --non-interactive",
+      "runAtStart": true
+    },
+    "open-edgedb-ui": {
+      "name": "Opens the edgedb UI viewer in a new tab",
+      "command": "edgedb ui",
+      "preview": {
+        "port": 4000,
+        "prLink": "direct"
+      },
+      "runAtStart": true
+    },
+    "start-app": {
+      "name": "Run Dev Server",
+      "command": "yarn start",
+      "runAtStart": true
+    }
+  }
+}
